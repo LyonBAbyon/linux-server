@@ -1,0 +1,43 @@
+{% extends "base.html" %} <!-- Brings content from base.html -->
+{% load static %} <!-- Loads Django static template tags -->
+{% block title %}Meeting Details{% endblock %} <!-- Brings content for title from base.html -->
+{% block content %} <!-- Replaces content of stated in base.html -->
+
+<div class="container mt-5">
+
+    <!-- Meeting details section start -->
+    <div class="row">
+        <div class="col text-center">
+            <h1>{{ meeting.title }}</h1>
+            <p class="mb-5">
+                This meeting has been scheduled on <strong>{{ meeting.date }}</strong> at 
+                <strong>{{ meeting.start_time|time:"H:i" }}</strong> in <strong>{{ meeting.room }}</strong>
+                <br><br>
+                Comment:<br>
+                {{ meeting.comment }}
+            </p>
+            <div class="mb-5">
+                <a href="{% url 'meeting_update' meeting.id %}" class="btn btn-primary mb-3">Update</a>
+                <a href="{% url 'meeting_delete' meeting.id %}" class="btn btn-danger mb-3">Delete</a>
+            </div>
+        </div>
+    </div>
+    <!-- Meeting details section End -->
+
+    <div class="mt-3 pt-5">
+        <button onclick="goBack()" class="btn btn-secondary">Back</button>
+    </div>
+    
+    
+
+</div>
+
+<!-- Script that is used in back button -->
+<script>
+    function goBack() {
+    window.history.back();
+    }
+    </script>
+<!-- End of Script -->
+
+{% endblock %}

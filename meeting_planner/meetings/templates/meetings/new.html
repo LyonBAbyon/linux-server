@@ -1,0 +1,33 @@
+{% extends "base.html" %} <!-- Brings content from base.html -->
+{% load static %} <!-- Loads Django static template tags -->
+{% block title %}New Meeting{% endblock %} <!-- Brings content for title from base.html -->
+{% block content %} <!-- Replaces content of stated in base.html -->
+
+<div class="container mt-5">
+
+    <!-- New meeting section start -->
+    <div class="row">
+        <div class="col text-left">
+            <h1 class="text-center">Plan a new meeting</h1>
+            <form method="post" class="mt-3">
+                <table class="mx-auto">
+                    {{ form }}
+                </table>
+                {% csrf_token %}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+    <!-- New meeting section end -->
+
+            <!-- Back button section start -->
+            <div class="mt-3">
+                <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+            </div>
+            <!-- Back button section end -->
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

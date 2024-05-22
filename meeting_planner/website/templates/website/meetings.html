@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+
+<style>
+    .card {
+        height: 150px; /* Adjust as needed */
+        object-fit: cover;
+    }
+    
+    .card-body {
+        overflow: auto;
+    }
+
+</style>
+
+
+    <div class="col text-center">
+        <h1 class="mb-4 mt-4">Meetings</h1>
+        <a href="{% url 'new_meeting' %}" class="btn btn-primary mb-4"> New Meeting </a>
+        <div class="row justify-content-center">
+            {% for meeting in meetings %}
+                <div class="col-md-2">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{% url 'detail' meeting.id %}" class="text-decoration-none text-dark">
+                                    {{ meeting.title }}
+                                </a>
+                            </h5>
+                            <p class="card-text">{{ meeting.date }} at {{meeting.start_time|time:"H:i"}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col">
+                    <p>No meetings scheduled.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

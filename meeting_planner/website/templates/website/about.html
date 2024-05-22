@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+
+    <h1>About page</h1>
+
+    <a href="https://www.accenture.com/jp-ja" target="_blank">
+        <img src="static\website\Accenturelogo.png" width="100px">
+    </a>
+
+    <h2>Meetings</h2>
+
+    <a href="{% url 'new_meeting' %}"> New Meeting </a>
+    
+    <ul>
+        {% for meeting in meetings %}
+            <li>
+                <a href="{% url 'detail' meeting.id %}">
+                    {{ meeting.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Rooms</h2>
+    <a href="{% url 'rooms' %}"> List of Rooms </a>
+
+{% endblock %}

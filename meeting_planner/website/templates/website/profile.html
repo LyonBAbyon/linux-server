@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Profile Page</h1>
+    <img src="{% static 'website/Profile icon.png' %}" width="100px" class="mb-4">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Your Information</h2>
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Full Name:</strong> {{ user.first_name|default:"Not set" }} {{ user.last_name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <a href="{% url 'change_profile' %}" class="btn btn-primary mt-3">Update Information</a>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary mt-3 mb-3">Logout</button>
+              </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

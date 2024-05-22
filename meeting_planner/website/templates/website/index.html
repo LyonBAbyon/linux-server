@@ -1,0 +1,53 @@
+{% extends "base.html" %} <!-- Brings content from base.html -->
+{% load static %} <!-- Loads Django static template tags -->
+{% block title %}Home{% endblock %} <!-- Brings content for title from base.html -->
+{% block content %} <!-- Replaces content of stated in base.html -->
+
+<style>
+    .news-header {
+        color: #333;
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+    
+    .news-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+    
+    .news-title {
+        color: #333;
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    .news-content {
+        color: #666;
+    }
+</style>
+
+<!-- Wide picture after header -->
+<div class="container-fluid text-left mt-5 ">
+    <div class="row">
+        <div class="col-md-6 px-0">
+            <img src="static\website\motion-transition-02.gif" width="100%">
+        </div>
+        <div class="col-md-6">
+            <h2 style="text-decoration: underline">Company News Update</h2>
+            <div class="news-item">
+                <h3>Discovery in Shinsaibashi: Kansai Resident Linked to Accenture English BN Spotted</h3>
+                <p>In a recent development, a resident of Kansai, identified as an employee of Accenture English BN, was sighted offering Django programming lessons..</p>
+            </div>
+            <div class="news-item">
+                <h3>Continued Incidents of Abandoned McDonald's Café Cups</h3>
+                <p>Despite repeated warnings issued, incidents of McDonald's café cups being left unattended..</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of picture -->
+
+{% endblock %}
